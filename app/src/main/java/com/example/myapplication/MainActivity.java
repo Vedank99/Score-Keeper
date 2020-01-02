@@ -2,10 +2,12 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,9 +52,18 @@ public class MainActivity extends AppCompatActivity {
         displayB();
     }
     public void resetAll(View view){
+        Toast.makeText(view.getContext(),"Resetting..",Toast.LENGTH_SHORT).show();
         scoreA = 0;
         scoreB = 0;
         displayA();
         displayB();
+    }
+    public void finishGame(View view)
+    {
+        Toast.makeText(view.getContext(),"Finishing",Toast.LENGTH_SHORT).show();
+        Intent fin = new Intent(this,finished.class);
+        fin.putExtra("ScoreA",scoreA);
+        fin.putExtra("ScoreB",scoreB);
+        startActivity(fin);
     }
 }
